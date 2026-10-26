@@ -1,0 +1,20 @@
+{
+    "url" : "http://49.249.29.4:8081/AppServer/Online_Shopping_Application/",
+    "name" : "naku",
+    "email" : "naku@gmail.com",
+    "contactNo" : "9898998989",
+    "password" : "naku123",
+    "cpassword" : "naku123",
+
+    "billingAddress" : "delhi",
+    "billingstate" : "delhi",
+    "billingcity" : "delhi",
+    "billingpincode" : "76868",
+
+    "shippingAddress" : "mumbai",
+    "shippingstate" : "maharashtra",
+    "shippingcity" : "mumbai",
+    "shippingpincode" : "45454"
+
+
+}
