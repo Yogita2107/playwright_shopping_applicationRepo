@@ -43,6 +43,7 @@ test("register and login with valid details ", async({page})=>{
     await homepage.loginLink.click()
 
     //? Generate random credentials
+    //yogita1234@gmail.com
     let randomEmail = `yogita${Date.now()}@gmail.com`;
     let randomPassword = `Test@${Math.floor(Math.random() * 100000)}`;
 
