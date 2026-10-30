@@ -1,30 +1,45 @@
 import { test, expect } from '../../fixture/app.fixture';
 import '../../config';
-import shippingAddress from '../../PageObjectModel/shippindAddress.page';
-import billingAddress from '../../PageObjectModel/billingAddress.page';
-import testdata from '../../testData/address.json';
+
+import addressData from '../../testData/address.json';
+import BillingAddress from '../../PageObjectModel/billingAddress.page';
+import ShippingAddress from '../../PageObjectModel/shippindAddress.page';
 
 test.use({ storageState: 'playwright/.auth/user.json' });
 
 test('Update Shipping and Billing Address', async ({ page, fashionPage, cartPage }) => {
 
-    let shipping = new shippingAddress(page);
-    let billing = new billingAddress(page);
+     // Initialize page objects
+    const billingAddress = new BillingAddress(page);
+    const shippingAddress = new ShippingAddress(page);
 
-    let billAddress = testdata.billingAddress;
-    let billstate = testdata.billingstate;
-    let billcity = testdata.billingcity;
-    let billpincode = testdata.billingpincode;
+    // Read test data
+    console.log('Imported address data:', addressData);
 
-    let shipaddress = testdata.shippingAddress;
-    let shipstate = testdata.shippingstate;
-    let shipcity = testdata.shippingcity;
-    let shippincode = testdata.shippingpincode;
+
+    const billAddress = addressData.billingAddress;
+    const billState = addressData.billingState;
+    const billCity = addressData.billingCity;
+    const billPincode = String(addressData.billingPincode);
+
+    const shipAddress = addressData.shippingAddress;
+    const shipState = addressData.shippingState;
+    const shipCity = addressData.shippingCity;
+    const shipPincode = String(addressData.shippingPincode);
+
+    // Validate data before filling fields
+    expect(billAddress, 'billingAddress missing from JSON').toBeDefined();
+    expect(billState, 'billingState missing from JSON').toBeDefined();
+    expect(billCity, 'billingCity missing from JSON').toBeDefined();
+    expect(shipAddress, 'shippingAddress missing from JSON').toBeDefined();
+    expect(shipState, 'shippingState missing from JSON').toBeDefined();
+    expect(shipCity, 'shippingCity missing from JSON').toBeDefined();
+
 
     await page.goto(process.env.BASE_URL);
 
     await fashionPage.fashionLink.click();
-    await fashionPage.fashionProduct.click();
+    await fashionPage.fashionProductName.click();
 
     page.once('dialog', async (dialog) => {
         await dialog.accept();
@@ -35,39 +50,33 @@ test('Update Shipping and Billing Address', async ({ page, fashionPage, cartPage
     await cartPage.checkCart.click();
     await cartPage.myCart.click();
 
-    await billing.billingAddressTF.fill(billAddress);
-    await billing.billingStateTF.fill(billstate);
-    await billing.billingCityTF.fill(billcity);
-    await billing.billingPincodeTF.fill(billpincode);
-    await billing.billingUpdateButton.click();
+   
+     // 1. Update Billing Address
+    await billingAddress.billingAddressTF.fill(billAddress);
+    await billingAddress.billingStateTF.fill(billState);
+    await billingAddress.billingCityTF.fill(billCity);
+    await billingAddress.billingPincodeTF.fill(billPincode);
+    await billingAddress.billingUpdateButton.click();
 
-    await shipping.shippingAddressTF.fill(shipaddress);
-    await shipping.shippingStateTF.fill(shipstate);
-    await shipping.shippingCityTF.fill(shipcity);
-    await shipping.shippingPincodeTF.fill(shippincode);
-    await shipping.shipUpadteButton.click();
+    // 2. Update Shipping Address
+    await shippingAddress.shippingAddressTF.fill(shipAddress);
+    await shippingAddress.shippingStateTF.fill(shipState);
+    await shippingAddress.shippingCityTF.fill(shipCity);
+    await shippingAddress.shippingPincodeTF.fill(shipPincode);
+    await shippingAddress.shipUpadteButton.click();
 
-    await billing.billingAddressTF.fill(billAddress);
-    await billing.billingStateTF.fill(billstate);
-    await billing.billingCityTF.fill(billcity);
-    await billing.billingPincodeTF.fill(billpincode);
-    await billing.billingUpdateButton.click();
+    // 3. Update Billing Address again
+    await billingAddress.billingAddressTF.fill(billAddress);
+    await billingAddress.billingStateTF.fill(billState);
+    await billingAddress.billingCityTF.fill(billCity);
+    await billingAddress.billingPincodeTF.fill(billPincode);
+    await billingAddress.billingUpdateButton.click();
 
-    const actualShippingAddress = await shipping.shippingAddressTF.inputValue();
-    console.log(actualShippingAddress);
-    
-    if (actualShippingAddress === shipaddress) {
-        console.log('Pass: Shipping Address updated');
-    } else {
-        console.log('Fail: Shipping Address not updated');
-    }
+    // 4. Verify Shipping Address
+    await expect(shippingAddress.shippingAddressTF).toHaveValue(shipAddress);
+    console.log('Pass: Shipping Address updated');
 
-    const actualBillingAddress = await billing.billingAddressTF.inputValue();
-    console.log(actualBillingAddress);
-        
-    if (actualBillingAddress === billAddress) {
-        console.log('Pass: Billing Address updated');
-    } else {
-        console.log('Fail: Billing Address not updated');
-    }
+    // 5. Verify Billing Address
+    await expect(billingAddress.billingAddressTF).toHaveValue(billAddress);
+    console.log('Pass: Billing Address updated');
 });

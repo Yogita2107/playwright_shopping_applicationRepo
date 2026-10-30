@@ -1,14 +1,12 @@
-
-import { test, expect } from '@playwright/test';
-import BooksPage from '../../PageObjectModel/BooksPage.page';
-import paymentMethod from '../../PageObjectModel/paymentMethod.page'
-import confirmProduct from '../../PageObjectModel/ConfirmProduct.page';
+import { test, expect } from '../../fixture/app.fixture';
+import '../../config';
 
 test.use({ storageState: 'playwright/.auth/user.json' });
 
 test('Checkout and select COD payment', async ({ page, booksPage, paymentMethodPage, confirmProductPage }) => {
     
-    await page.goto(process.env.BASE_URL);
+    // await page.goto('/');
+     await page.goto(process.env.BASE_URL);
     
 
     // Add a book to cart
@@ -19,7 +17,7 @@ test('Checkout and select COD payment', async ({ page, booksPage, paymentMethodP
         await dialog.accept();
     });
 
-    await books.bookAddToCart.click();
+    await booksPage.bookAddToCart.click();
     
     await booksPage.checkCart.click()
     await booksPage.myCart.click()

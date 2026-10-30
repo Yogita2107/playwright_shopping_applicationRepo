@@ -8,7 +8,7 @@ test('Submit electronics product review', async ({ page, electronicsPage, review
     await page.goto(process.env.BASE_URL);
 
     await electronicsPage.electronicLink.click();
-    await electronicsPage.electroProduct.click();
+    await electronicsPage.ElectroCartProductName.click();
     
     await reviewPage.reviewButton.click();
     

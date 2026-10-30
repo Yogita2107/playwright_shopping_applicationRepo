@@ -7,6 +7,8 @@ import reviewProduct from '../PageObjectModel/reviewProduct.page';
 import cartPage from '../PageObjectModel/cartPage.page.js';
 import FashionPage from '../PageObjectModel/fashionpage.page'
 import wishList from '../PageObjectModel/wishList.page.js'
+import confirmProduct from '../PageObjectModel/ConfirmProduct.page.js'
+import paymentMethod from '../PageObjectModel/paymentMethod.page.js'
 
 export const test = base.extend({
     loginPage: async ({ page }, use) => { await use(new login(page)); },
@@ -16,7 +18,9 @@ export const test = base.extend({
     fashionPage: async ({ page }, use) => { await use(new FashionPage(page)); },
     cartPage: async ({ page }, use) => { await use(new cartPage(page)); },
     wishListPage: async ({ page }, use) => { await use(new wishList(page)); },
-    reviewPage: async ({ page }, use) => { await use(new reviewProduct(page)); }
+    reviewPage: async ({ page }, use) => { await use(new reviewProduct(page)); },
+    confirmProductPage : async ({ page }, use) => { await use(new confirmProduct(page));},
+    paymentMethodPage :  async({page }, use) =>{await use(new paymentMethod(page));}
 });
 
 export const expect = baseExpect;

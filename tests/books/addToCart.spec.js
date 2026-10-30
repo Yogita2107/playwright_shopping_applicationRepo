@@ -1,8 +1,4 @@
-
-// import { test, expect } from '@playwright/test';
 import { test, expect } from '../../fixture/app.fixture';
-// import BooksPage from '../PageObjectModel/BooksPage.page';
-// import { count } from 'node:console';
 import '../../config';
 
 
@@ -10,7 +6,7 @@ test.use({
     storageState: 'playwright/.auth/user.json'
 });
 
-test('Select a book and add it to cart', async ({ page, homePage, booksPage }) => {
+test('Select a book and add it to cart', async ({ page, booksPage,cartPage  }) => {
 // Handle popup if Add to Cart triggers one
     page.once('dialog', async (dialog) => {
         console.log('Popup message:', dialog.message());

@@ -11,7 +11,7 @@ test('Checkout and select COD payment for Fashion', async ({ page, fashionPage, 
     // 2. Add a fashion product to cart using the injected fashionPage fixture
     // (Ensure these method names match what is in your fashionpage.page.js file)
     await fashionPage.fashionLink.click();
-    await fashionPage.fashionProduct.click();
+    await fashionPage.fashionProductName.click();
 
     page.once('dialog', async (dialog) => {
         await dialog.accept();

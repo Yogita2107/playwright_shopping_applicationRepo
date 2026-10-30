@@ -1,12 +1,12 @@
 {
-    "billingAddress" : "delhi",
-    "billingstate" : "delhi",
-    "billingcity" : "delhi",
-    "billingpincode" : "76868",
+    "billingAddress": "delhi",
+    "billingState": "delhi",
+    "billingCity": "delhi",
+    "billingPincode": "76868",
 
-    "shippingAddress" : "mumbai",
-    "shippingstate" : "maharashtra",
-    "shippingcity" : "mumbai",
-    "shippingpincode" : "45454"
+    "shippingAddress": "mumbai",
+    "shippingState": "maharashtra",
+    "shippingCity": "mumbai",
+    "shippingPincode": "45454"
 
 }

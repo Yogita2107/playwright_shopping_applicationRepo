@@ -16,10 +16,10 @@ test('Add fashion product to wishlist', async ({ page, fashionPage, wishListPage
 
     // Navigate to Fashion and select a product
     await fashionPage.fashionLink.click();
-    await fashionPage.fashionProduct.click();
+    await fashionPage.fashionProductName.click();
 
     // Add product to wishlist
-    await wishListPage.wishlist.click();
+    await wishListPage.wishlistLink.click();
 
     // Verify product visibility
     const isProductVisible = await fashionPage.fashionProductName.first().isVisible();

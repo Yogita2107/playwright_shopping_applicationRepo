@@ -4,11 +4,16 @@ class cartPage {
         
         //Navigation to Cart
         this.checkCart = page.locator('//i[@class="glyphicon glyphicon-shopping-cart"]'); 
-        this.myCart = page.locator('//a[text()="My Cart" and @class="btn btn-upper btn-primary btn-block m-t-20"]');       
+        // this.myCart = page.locator('//a[text()="My Cart" and @class="btn btn-upper btn-primary btn-block m-t-20"]'); 
+        this.myCart = page.getByRole('link', {
+    name: 'My Cart',
+    exact: true
+});      
 
 
-        this.cartQuantity = page.locator('//input[@name = "quantity[16]"]'); 
-
+        // this.cartQuantity = page.locator('//input[@name = "quantity[16]"]'); 
+   
+        this.cartQuantity = page.locator('input[name^="quantity"]')
         this.updateCartButton = page.locator('//input[@value="Update shopping cart"]')
 
         

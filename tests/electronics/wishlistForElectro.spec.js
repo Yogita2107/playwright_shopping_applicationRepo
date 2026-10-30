@@ -16,13 +16,13 @@ test('Add electronics product to wishlist', async ({ page, electronicsPage, wish
 
     // Navigate to Electronics and select a product
     await electronicsPage.electronicLink.click();
-    await electronicsPage.electroProduct.click();
+    await electronicsPage.ElectroCartProductName.click();
 
     // Add product to wishlist
-    await wishListPage.wishlist.click();
+    await wishListPage.wishlistLink.click();
 
     // Verify product visibility
-    const isProductVisible = await electronicsPage.ElectroCartProductName.first().isVisible();
+    const isProductVisible = await electronicsPage.cartProductName.first().isVisible();
 
     if (isProductVisible) {
         console.log('Pass: Electronics product is visible in wishlist');

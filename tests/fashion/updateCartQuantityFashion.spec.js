@@ -9,7 +9,7 @@ test('Update fashion quantity in cart', async ({ page, fashionPage, cartPage }) 
     await page.goto(process.env.BASE_URL);
 
     await fashionPage.fashionLink.click();
-    await fashionPage.fashionProduct.click();
+    await fashionPage.fashionProductName.click();
 
     page.once('dialog', async (dialog) => {
         console.log('Popup message:', dialog.message());

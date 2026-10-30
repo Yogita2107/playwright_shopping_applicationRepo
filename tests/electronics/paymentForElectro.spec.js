@@ -10,7 +10,7 @@ test('Checkout and select COD payment for Electronics', async ({ page, electroni
 
     // 2. Add an electronics product to cart using the injected electronicsPage fixture
     await electronicsPage.electronicLink.click();
-    await electronicsPage.electroProduct.click();
+    await electronicsPage.ElectroCartProductName.click();
 
     page.once('dialog', async (dialog) => {
         await dialog.accept();

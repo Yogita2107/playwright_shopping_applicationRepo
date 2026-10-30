@@ -18,7 +18,7 @@ test('Add book to wishlist', async ({ page, booksPage, wishListPage }) => {
     await booksPage.bookProduct.click();
 
     // Add book to wishlist
-    await wishListPage.wishlist.click();
+   await wishListPage.wishlistLink.click();
 
     // Verify product visibility
     const isProductVisible = await booksPage.cartProductName.first().isVisible();

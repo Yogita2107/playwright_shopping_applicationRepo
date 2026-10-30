@@ -7,7 +7,7 @@ test('Remove electronics from cart', async ({ page, electronicsPage, cartPage })
     await page.goto(process.env.BASE_URL);
 
     await electronicsPage.electronicLink.click();
-    await electronicsPage.electroProduct.click();
+    await electronicsPage.ElectroCartProductName.click();
 
     page.once('dialog', async (dialog) => { await dialog.accept(); });
 
@@ -15,7 +15,7 @@ test('Remove electronics from cart', async ({ page, electronicsPage, cartPage })
     await electronicsPage.checkCart.click();
     await electronicsPage.myCart.click();
 
-    await expect(electronicsPage.ElectroCartProductName).toBeVisible();
+    await expect(electronicsPage.cartProductName).toBeVisible();
 
     // Use cartPage for cart actions
     await cartPage.remove.click();
