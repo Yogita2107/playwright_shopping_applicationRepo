@@ -2,6 +2,9 @@
 pipeline {
     agent any
 
+    environment {
+        BASE_URL = 'http://49.249.29.4:8081/AppServer/Online_Shopping_Application/'
+    }
     stages {
         stage('Install Dependencies') {
             steps {
