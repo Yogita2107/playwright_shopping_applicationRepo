@@ -9,8 +9,18 @@ import FashionPage from '../PageObjectModel/fashionpage.page'
 import wishList from '../PageObjectModel/wishList.page.js'
 import confirmProduct from '../PageObjectModel/ConfirmProduct.page.js'
 import paymentMethod from '../PageObjectModel/paymentMethod.page.js'
+// import dotenv from "dotenv"
 
-export const test = base.extend({
+// dotenv.config();
+
+   export const test = base.extend({
+//     login : async({page}, use) =>{
+//         const openApp = async()=>{
+//              await page.goto(process.env.BASE_URL)
+//         };
+//        await use(openApp)
+//     },
+
     loginPage: async ({ page }, use) => { await use(new login(page)); },
     homePage: async ({ page }, use) => { await use(new HomePage(page)); },
     booksPage: async ({ page }, use) => { await use(new BooksPage(page)); },

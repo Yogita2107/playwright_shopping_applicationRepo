@@ -7,7 +7,7 @@ setup('Login and save authentication state', async ({ page }) => {
     const loginPage = new login(page);
     const testdata = data[0];
     
-   await page.goto(testdata.url);
+   await page.goto(testdata.url)
 
     await loginPage.emailTF.fill(testdata.email);
     await loginPage.passwordTF.fill(testdata.password);

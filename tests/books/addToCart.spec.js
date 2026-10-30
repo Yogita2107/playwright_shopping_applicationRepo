@@ -6,7 +6,7 @@ test.use({
     storageState: 'playwright/.auth/user.json'
 });
 
-test('Select a book and add it to cart', async ({ page, booksPage,cartPage  }) => {
+test('Select a book and add it to cart', async ({page, booksPage,cartPage  }) => {
 // Handle popup if Add to Cart triggers one
     page.once('dialog', async (dialog) => {
         console.log('Popup message:', dialog.message());
