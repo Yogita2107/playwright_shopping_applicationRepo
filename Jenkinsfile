@@ -27,7 +27,8 @@ pipeline {
                     )
 
                     if (status != 0) {
-                        echo 'Some Playwright tests failed.'
+                       currentBuild.result = 'FAILURE'
+                       echo 'Some Playwright tests failed.'
                     }
                 }
             }
@@ -43,7 +44,7 @@ pipeline {
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
                 allowMissing: true,
-                linkRelative: false
+                // linkRelative: false
             ])
         }
     }
